@@ -1,6 +1,7 @@
 backend.tf
 provider.tf
 terragrunt.plan
+terragrunt-debug.tfvars.json
 **/.terraform.*
 **/.terraform/*
 **/terraform.tfstate

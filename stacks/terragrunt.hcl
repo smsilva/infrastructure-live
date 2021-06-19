@@ -21,6 +21,8 @@ locals {
 
   tenant_id       = local.account_vars.locals.tenant_id
   subscription_id = local.account_vars.locals.subscription_id
+  
+  modules_repository = "git::git@github.com:smsilva/infrastructure-modules.git/"
 }
 
 generate "provider" {
@@ -38,5 +40,6 @@ EOF
 inputs = merge(
   local.account_vars.locals,
   local.region_vars.locals,
-  local.environment_vars.locals
+  local.environment_vars.locals,
+  local
 )

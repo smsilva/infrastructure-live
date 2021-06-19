@@ -1,5 +1,5 @@
 terraform {
-  source = "git::git@github.com:smsilva/infrastructure-modules.git//app?ref=v0.0.1"
+  source = "${include.inputs.modules_repository}/app?ref=v0.0.1"
 }
 
 include {
