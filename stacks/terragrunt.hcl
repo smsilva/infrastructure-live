@@ -17,7 +17,7 @@ remote_state {
 locals {
   account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl"))
   region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
-  # environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
+  environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
 
   tenant_id       = local.account_vars.locals.tenant_id
   subscription_id = local.account_vars.locals.subscription_id
@@ -37,5 +37,6 @@ EOF
 
 inputs = merge(
   local.account_vars.locals,
-  local.region_vars.locals
+  local.region_vars.locals,
+  local.environment_vars.locals
 )
