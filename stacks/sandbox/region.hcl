@@ -1,3 +1,3 @@
 locals {
-  location = "eastus2"
+  location = "centralus"
 }
