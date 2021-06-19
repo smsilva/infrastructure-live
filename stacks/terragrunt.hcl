@@ -16,13 +16,11 @@ remote_state {
 
 locals {
   account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl"))
-  # region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
+  region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
   # environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
 
-  # Extract the variables we need for easy access
-  tenant_id = local.account_vars.locals.tenant_id
-  # account_id   = local.account_vars.locals.aws_account_id
-  # aws_region   = local.region_vars.locals.aws_region
+  tenant_id       = local.account_vars.locals.tenant_id
+  subscription_id = local.account_vars.locals.subscription_id
 }
 
 generate "provider" {
@@ -31,12 +29,13 @@ generate "provider" {
   contents = <<EOF
 provider "azurerm" {
   tenant_id       = "${local.tenant_id}"
-  subscription_id = "ddc30188-075a-470d-a6ca-05a1987c51a3"
+  subscription_id = "${local.subscription_id}"
   features {}
 }
 EOF
 }
 
 inputs = merge(
-  local.account_vars.locals
+  local.account_vars.locals,
+  local.region_vars.locals
 )
