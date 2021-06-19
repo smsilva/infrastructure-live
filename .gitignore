@@ -1,0 +1,7 @@
+backend.tf
+provider.tf
+**/.terraform.*
+**/.terraform/*
+**/terraform.tfstate
+**/terraform.tfstate.backup
+sandbox/app/.terragrunt-cache/
