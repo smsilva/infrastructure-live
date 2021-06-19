@@ -15,21 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install Terraform 1.0.0
+      - name: Test
         run: |
-          sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
-          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-          sudo apt-get update
-          sudo apt-get install terraform=1.0.0
-
-      - name: Install Terragrunt v0.30.7
-        run: |
-          mkdir -p ${HOME?}/bin
-          sudo wget "https://github.com/gruntwork-io/terragrunt/releases/download/v0.30.7/terragrunt_linux_amd64" \
-            --output-document "${HOME?}/bin/terragrunt" --quiet
-
-      - name: Check versions
-        run: |
-          terraform version -json
-          terragrunt --version
+          echo Hello
