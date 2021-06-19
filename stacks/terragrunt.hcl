@@ -15,12 +15,12 @@ remote_state {
 }
 
 locals {
-  account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl"))
-  region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
-  environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
+  account_vars       = read_terragrunt_config(find_in_parent_folders("account.hcl"))
+  region_vars        = read_terragrunt_config(find_in_parent_folders("region.hcl"))
+  environment_vars   = read_terragrunt_config(find_in_parent_folders("env.hcl"))
 
-  tenant_id       = local.account_vars.locals.tenant_id
-  subscription_id = local.account_vars.locals.subscription_id
+  tenant_id          = local.account_vars.locals.tenant_id
+  subscription_id    = local.account_vars.locals.subscription_id
   
   modules_repository = "git::git@github.com:smsilva/infrastructure-modules.git/"
 }
@@ -28,6 +28,7 @@ locals {
 generate "provider" {
   path = "provider.tf"
   if_exists = "overwrite_terragrunt"
+  
   contents = <<EOF
 provider "azurerm" {
   tenant_id       = "${local.tenant_id}"
