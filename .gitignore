@@ -4,4 +4,4 @@ provider.tf
 **/.terraform/*
 **/terraform.tfstate
 **/terraform.tfstate.backup
-sandbox/app/.terragrunt-cache/
+**/**/.terragrunt-cache/
