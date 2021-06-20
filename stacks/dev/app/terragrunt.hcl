@@ -8,8 +8,8 @@ include {
 }
 
 inputs = {
-  name     = "iac-live-${include.inputs.environment}"
-  location = "${include.inputs.location}"
+  name            = "iac-live-${include.inputs.environment}"
+  location        = "${include.inputs.location}"
   tag_description = "This is the new description for the Resource Group Tag"
   tag_environment = "${include.inputs.environment}"
 }
