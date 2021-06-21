@@ -8,5 +8,5 @@ include {
 }
 
 inputs = {
-  name = "iac-live-${include.inputs.environment}"
+  name = "iac-live-${include.inputs.environment}-test"
 }
